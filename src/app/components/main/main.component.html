@@ -1,0 +1,47 @@
+<div class="base" fxLayoutAlign="center center">
+  <div
+    fxLayout="row wrap"
+    fxFlex.xs="100"
+    fxFlex.gt-sm="65em"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-xs="center center"
+    fxLayoutAlign.sm="space-between center"
+  >
+    <mat-card
+      [ngStyle]="{ margin: '15px' }"
+      [ngStyle.sm]="{ margin: '15px 5px 5px 5px' }"
+      fxFlex.xs="100"
+      fxFlex.gt-xs="45%"
+      fxFlex.sm="48%"
+      fxLayout="column"
+      fxLayoutAlign="space-between stretch"
+      *ngFor="let card of cards"
+    >
+      <mat-card-header>
+        <mat-card-title
+          routerLink="/shoppingcart"
+          fxLayoutAlign="start center"
+          [innerHTML]="card.title"
+        ></mat-card-title>
+        <mat-card-subtitle
+          routerLink="/shoppingcart"
+          fxLayoutAlign="start center"
+          [innerHTML]="card.subtitle"
+        ></mat-card-subtitle>
+      </mat-card-header>
+      <img
+        routerLink="/shoppingcart"
+        mat-card-image
+        src="{{ card.image }}"
+        alt="Imagen"
+      />
+      <mat-card-content fxFlex.xs="0" fxFlex.sm="12em">
+        <p>{{ card.startDate }} - {{ card.endDate }}</p>
+        <p fxHide.xs fxShow.gt-xs [innerHTML]="card.description"></p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button routerLink="/shoppingcart" mat-button>Comprar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

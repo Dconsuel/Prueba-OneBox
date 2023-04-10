@@ -1,0 +1,39 @@
+.base-child{
+    height: 5em;
+}
+
+.button-volver{
+    color: lightskyblue;
+}
+
+.sessions{
+    padding: 15px;
+    border: 2px solid lightgray;
+    div{
+        margin: 0;
+        padding: 0;
+        div{
+            button{
+                min-width: 30px;
+            }
+        }
+    }
+}
+
+.shopping{
+    padding-left: 30px;
+    padding-right: 30px;
+    .shopping-card{
+        margin-bottom: 20px;
+    }
+    .header{
+        font-size: large;
+        padding-bottom: 8px;
+        font-weight: 500;
+    }
+    .trash{
+        width: 18px;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+}
