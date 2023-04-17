@@ -8,14 +8,9 @@ export const environment: Environment = {
   production: false,
   baseUrl: '',
   endpoints: {
-    eventInfo68: {
+    eventInfo: {
       method: 'GET',
-      url: 'assets/mocks/event-info-68.json',
-      responseType: 'json',
-    },
-    eventInfo184: {
-      method: 'GET',
-      url: 'assets/mocks/event-info-184.json',
+      url: 'assets/mocks/event-info-#.json',
       responseType: 'json',
     },
     events: {

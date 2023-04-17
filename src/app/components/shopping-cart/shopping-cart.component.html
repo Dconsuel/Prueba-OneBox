@@ -11,96 +11,24 @@
         fxLayoutAlign.xs="space-between stretch"
         fxFlex="100"
       >
-        <mat-list class="sessions" fxFlex="50" fxFlex.xs="100" fxLayout="column">
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-            <div><span>Fecha: 23/09/2015, Disponibilidad: 3</span></div>
+        <mat-list *ngIf="content" class="sessions" fxFlex="50" fxFlex.xs="100" fxLayout="column">
+          <div *ngFor="let session of sessionsObject?.sessions; let i= index" fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+            <div><span>Fecha: {{session.date}}, Disponibilidad: {{session.availability}}</span></div>
             <div fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary">-</button>
-              <span>0</span>
-              <button mat-button color="primary">+</button>
+              <button mat-button color="primary" (click)="applist.subtractAvailability(i)">-</button>
+              <span>{{session.numberticket}}</span>
+              <button mat-button color="primary" (click)="applist.addAvailability(i)">+</button>
             </div>
           </div>
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-            <div><span>Fecha: 23/09/2015, Disponibilidad: 3</span></div>
-            <div fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary">-</button>
-              <span>0</span>
-              <button mat-button color="primary">+</button>
-            </div>
-          </div>
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-            <div><span>Fecha: 23/09/2015, Disponibilidad: 3</span></div>
-            <div fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary">-</button>
-              <span>0</span>
-              <button mat-button color="primary">+</button>
-            </div>
-          </div>
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-            <div><span>Fecha: 23/09/2015, Disponibilidad: 3</span></div>
-            <div fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary">-</button>
-              <span>0</span>
-              <button mat-button color="primary">+</button>
-            </div>
-          </div>
-          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
-            <div><span>Fecha: 23/09/2015, Disponibilidad: 3</span></div>
-            <div fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button color="primary">-</button>
-              <span>0</span>
-              <button mat-button color="primary">+</button>
-            </div>
+        </mat-list>
+        <mat-list *ngIf="!content" class="sessions" fxFlex="50" fxFlex.xs="100" fxLayout="column">
+          <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center">
+            <div><span style="color: red; font-weight: 500">EVENT INFO NOT FOUND</span></div>
           </div>
         </mat-list>
         <div fxFlex="50">
           <mat-list class="shopping" fxLayout="column">
-            <div class="shopping-card" fxFlex="100" fxLayout="column">
-              <div class="header"><span>PABLO ALBORÁN</span></div>
-              <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <span>30/09/2015</span>
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                      <span>x2</span>
-                      <span><img class="trash"
-                          src="/assets/img/trash.png"
-                          alt="Imagen"
-                        /></span>
-                  </div>
-              </div>
-              <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <span>30/09/2015</span>
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                      <span>x2</span>
-                      <span><img class="trash"
-                          src="/assets/img/trash.png"
-                          alt="Imagen"
-                        /></span>
-                  </div>
-              </div>
-            </div>
-            <div class="shopping-card" fxFlex="100" fxLayout="column">
-              <div class="header"><span>PABLO ALBORÁN</span></div>
-              <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <span>30/09/2015</span>
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                      <span>x2</span>
-                      <span><img class="trash"
-                          src="/assets/img/trash.png"
-                          alt="Imagen"
-                        /></span>
-                  </div>
-              </div>
-              <div fxLayout="row" fxLayoutAlign="space-between center">
-                  <span>30/09/2015</span>
-                  <div fxLayout="row" fxLayoutAlign="space-between center">
-                      <span>x2</span>
-                      <span><img class="trash"
-                          src="/assets/img/trash.png"
-                          alt="Imagen"
-                        /></span>
-                  </div>
-              </div>
-            </div>
+            <app-list-shopping #applist [typeCard]="sessionsObject"></app-list-shopping>
           </mat-list>
         </div>
       </div>

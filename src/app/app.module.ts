@@ -13,12 +13,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ListShoppingComponent } from './components/list-shopping/list-shopping.component';
+import { OrderbyPipe } from './shared/pipes/orderby.pipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ListShoppingComponent,
+    OrderbyPipe
   ],
   imports: [
     BrowserModule,
@@ -30,9 +35,9 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HttpClientModule,
     MatButtonModule,
     MatListModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
-  providers: [],
+  providers: [OrderbyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

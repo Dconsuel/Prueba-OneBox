@@ -1,0 +1,14 @@
+<div *ngIf="Shoppingcart.length > 0" fxLayout="column">
+    <div *ngFor="let eventSession of Shoppingcart; let a = index" class="shopping-card" fxFlex="100" fxLayout="column">
+        <div class="itemListtitle" style="font-size: large; padding-bottom: 8px; font-weight: 500;"><span>{{eventSession.event?.title}}</span></div>
+        <div *ngFor="let session of eventSession.sessions | OrderBy: 'asc'; let i = index" class="itemList" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+            <span>{{ session.date }}</span>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+                <span class="numberticket">x{{ session.numberticket }}</span>
+                <span class="eventclick" (click)="removesession(a,i)"
+                ><img style="width: 18px; margin-left: 20px; cursor: pointer" src="/assets/img/trash.png" alt="Imagen"
+                /></span>
+            </div>
+        </div>
+    </div>
+</div>

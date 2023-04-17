@@ -5,8 +5,7 @@ export interface Environment {
 }
 
 interface Endpoints {
-  eventInfo68: Endpoint;
-  eventInfo184: Endpoint;
+  eventInfo: Endpoint;
   events: Endpoint;
 }
 
