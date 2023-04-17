@@ -9,7 +9,6 @@ export class Session {
   date: string = '';
   availability: number = 0;
   numberticket: number = 0;
-  rangeavailability?: number;
 }
 
 export class EventSessions {

@@ -1,3 +1,25 @@
-.shopping-card{
-    margin-bottom: 20px;
+.shopping-card {
+  margin-bottom: 20px;
+  .itemListtitle {
+    font-size: large;
+    padding-bottom: 8px;
+    font-weight: 500;
+  }
+  .itemList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        width: 18px;
+        margin-left: 20px;
+        cursor: pointer;
+      }
+    }
+  }
 }

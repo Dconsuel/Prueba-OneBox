@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Output} from '@angular/core';
-import { EventSessions, Session } from 'src/app/shared/models/events-info.model';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { EventSessions } from 'src/app/shared/models/events-info.model';
 import { OrderbyPipe } from 'src/app/shared/pipes/orderby.pipe';
 import { EventsinfoService } from 'src/app/shared/services/eventsinfo.service';
 
@@ -36,7 +36,6 @@ export class ListShoppingComponent {
         this.subtractAvailability(numbertypecard);
       }
     }else{
-      //para las sessiones de la cesta que no estan en su pagina
       if(object){
         object.availability = +object.availability + 1;
         object.numberticket -= 1;
@@ -66,7 +65,6 @@ export class ListShoppingComponent {
       localStorage.setItem("ShoppingcartLocal", JSON.stringify(this.Shoppingcart));
     }
     this.cdr.detectChanges();
-
   }
   
 
@@ -118,11 +116,7 @@ export class ListShoppingComponent {
                   typercardlocal.numberticket = Shoppingcart.numberticket;
                 }
               }
-            }else{
-              // this.typecardlocal.push(this.Shoppingcart[a]);
             }
-          }else{
-            // this.typecardlocal.push(this.Shoppingcart[a]);
           }
         }
       }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { EventsinfoService } from './shared/services/eventsinfo.service';
-import { GetEvents } from './shared/models/events.model';
 
 @Component({
   selector: 'app-root',
