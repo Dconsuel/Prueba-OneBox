@@ -10,26 +10,35 @@ import { EventsinfoService } from '../../shared/services/eventsinfo.service';
 export class MainComponent {
 
   cards: GetEvents[];
+
   constructor(public eventsinfo: EventsinfoService){
     this.cards = [];
   }
+
   ngOnInit(): void {
+    // Llamada al servicio getEvents()
     this.eventsinfo.getEvents().subscribe({
       next: (res: GetEvents[]) => {
+        // Lógica principal del componente
         this.logicMain(res);
       },
       error: () => {
+        // Manejo de errores (vacío)
       },
     });
   }
 
+  // Función que aplica la lógica principal del componente
   logicMain(res: GetEvents[]){
+    // Se asigna el resultado de la llamada a la propiedad cards
     this.cards = res;
+    // Se ordena la lista de eventos por fecha de finalización
     this.cards.sort((a, b) => {
       const fechaA = new Date(+(a.endDate)).getTime();
       const fechaB = new Date(+(b.endDate)).getTime();
       return fechaA - fechaB;
     });
+    // Se formatea la fecha de inicio y fin de cada evento en la lista
     this.cards.forEach((item) =>{
       let numfecha: number = +item.startDate;
       let fecha = new Date(numfecha);
@@ -47,3 +56,4 @@ export class MainComponent {
     });
   }
 }
+
