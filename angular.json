@@ -98,7 +98,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["node_modules/zone.js/dist/zone-testing.js"]
           }
         }
       }

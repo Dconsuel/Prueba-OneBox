@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EventSessions } from 'src/app/shared/models/events-info.model';
-import { EventsinfoService } from 'src/app/shared/services/eventsinfo.service';
+import { EventSessions } from '../../shared/models/events-info.model';
+import { EventsinfoService } from '../../shared/services/eventsinfo.service';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -13,11 +13,15 @@ export class ShoppingCartComponent {
   sessionsObject: EventSessions | null = new EventSessions();
   sessionsObjectLocal: EventSessions[] = [];
 
-  constructor(private route: ActivatedRoute, private eventsinfo: EventsinfoService) {
+  constructor(private route: ActivatedRoute, public eventsinfo: EventsinfoService) {
     this.route.params.subscribe(params => {
       this.cardId = params['id'];
     });
     let result = localStorage.getItem("TypeCard");
+    this.getResultObjectlocal(result);
+  }
+
+  getResultObjectlocal(result: string | null){
     if(result){
       this.sessionsObjectLocal = JSON.parse(result);
       let index = this.sessionsObjectLocal.findIndex(item => item.event?.id === this.cardId);

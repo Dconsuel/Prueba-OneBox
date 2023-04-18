@@ -30,31 +30,39 @@ export class EventsinfoService {
     let eventsessions: Record<string, EventSessions | null> = {};
     return this.http.get(url).pipe(
       map((res: Object) => {
-        eventsessions[id] = res as EventSessions;
-        eventsessions[id]?.sessions?.sort((a, b) => {
-          const fechaA = new Date(+(a.date)).getTime();
-          const fechaB = new Date(+(b.date)).getTime();
-          return fechaA - fechaB;
-        });
-        eventsessions[id]?.sessions?.forEach((item) =>{
-          let numfecha: number = +item.date;
-          let fecha = new Date(numfecha);
-          let dia = fecha.getDate();
-          let mes = fecha.getMonth() + 1;
-          let anio = fecha.getFullYear();
-          item.date = `${dia}/${mes}/${anio}`;
-          item.numberticket = 0;
-        });
-        this.StateEventSessions?.push(eventsessions);
-        return eventsessions;
+        return this.getEventlogic(eventsessions, id, res);
       }),
       catchError((error) => {
-        eventsessions[id] = null;
-        this.StateEventSessions?.push(eventsessions);
-        console.error('Error fetching event sessions:', error);
-        return throwError(() => error);
+        return this.getError(error, eventsessions, id);
       })
     );
+  }
+
+  getError(error: any, eventsessions: Record<string, EventSessions | null>, id: string){
+    eventsessions[id] = null;
+    this.StateEventSessions?.push(eventsessions);
+    console.error('Error fetching event sessions:', error);
+    return throwError(() => error);
+  }
+
+  getEventlogic(eventsessions: Record<string, EventSessions | null>,id: string, res: Object){
+    eventsessions[id] = res as EventSessions;
+    eventsessions[id]?.sessions?.sort((a, b) => {
+      const fechaA = new Date(+(a.date)).getTime();
+      const fechaB = new Date(+(b.date)).getTime();
+      return fechaA - fechaB;
+    });
+    eventsessions[id]?.sessions?.forEach((item) =>{
+      let numfecha: number = +item.date;
+      let fecha = new Date(numfecha);
+      let dia = fecha.getDate();
+      let mes = fecha.getMonth() + 1;
+      let anio = fecha.getFullYear();
+      item.date = `${dia}/${mes}/${anio}`;
+      item.numberticket = 0;
+    });
+    this.StateEventSessions?.push(eventsessions);
+    return eventsessions;
   }
 
 }

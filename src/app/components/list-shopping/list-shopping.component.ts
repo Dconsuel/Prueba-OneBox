@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { EventSessions } from 'src/app/shared/models/events-info.model';
-import { OrderbyPipe } from 'src/app/shared/pipes/orderby.pipe';
-import { EventsinfoService } from 'src/app/shared/services/eventsinfo.service';
+import { EventSessions } from '../../shared/models/events-info.model';
+import { OrderbyPipe } from '../../shared/pipes/orderby.pipe';
+import { EventsinfoService } from '../../shared/services/eventsinfo.service';
 
 @Component({
   selector: 'app-list-shopping',
@@ -16,7 +16,7 @@ export class ListShoppingComponent {
 
   Shoppingcart: EventSessions[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private eventsinfo: EventsinfoService, private orderbypipe: OrderbyPipe){
+  constructor(private cdr: ChangeDetectorRef, public eventsinfo: EventsinfoService, public orderbypipe: OrderbyPipe){
     let result = localStorage.getItem("ShoppingcartLocal");
     let resultt = localStorage.getItem("TypeCard");
     if(result){
